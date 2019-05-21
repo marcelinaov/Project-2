@@ -33,3 +33,10 @@ h6{
 .form-group{
   padding-top: 20px;
 }
+
+.image{
+  background-image: url("../images/pink\ trail\ image.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 380px;
+}
