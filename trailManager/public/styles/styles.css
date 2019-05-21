@@ -1,7 +1,35 @@
-.list-group-item {
-  line-height: 2.5;
+body{
+  background-image: url("../images/purple.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
 }
 
-.list-group {
-      background-color: powderblue;
-    }
+#home{
+  border-radius: 15px;
+  padding-top: 50px;
+  height: 650px;
+  width: 30%;
+  background-color: white;
+  object-position: center;
+  position: absolute;
+  top: 100px;
+  left: 500px;
+}
+
+h6{
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+
+.btn{
+  background-image: url("../images/RCZ2rt.jpg");
+  position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 50%;
+}
+
+.form-group{
+  padding-top: 20px;
+}
