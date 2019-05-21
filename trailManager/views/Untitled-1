@@ -1,0 +1,29 @@
+  { id: 7004678,
+    name: 'Welcome to Chautauqua',
+    type: 'Featured Hike',
+    summary:
+     'Perhaps the most popular (crowded!) hike in America. And for good reason.',
+    difficulty: 'greenBlue',
+    stars: 4.3,
+    starVotes: 19,
+    location: 'Boulder, Colorado',
+    url:
+     'https://www.hikingproject.com/trail/7004678/welcome-to-chautauqua',
+    imgSqSmall:
+     'https://cdn-files.apstatic.com/hike/7003311_sqsmall_1554233834.jpg',
+    imgSmall:
+     'https://cdn-files.apstatic.com/hike/7003311_small_1554233834.jpg',
+    imgSmallMed:
+     'https://cdn-files.apstatic.com/hike/7003311_smallMed_1554233834.jpg',
+    imgMedium:
+     'https://cdn-files.apstatic.com/hike/7003311_medium_1554233834.jpg',
+    length: 1.3,
+    ascent: 436,
+    descent: -434,
+    high: 6139,
+    low: 5703,
+    longitude: -105.2829,
+    latitude: 39.9988,
+    conditionStatus: 'All Clear',
+    conditionDetails: 'Dry',
+    conditionDate: '2019-05-17 07:38:34' } ]
