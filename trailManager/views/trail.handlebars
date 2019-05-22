@@ -5,7 +5,7 @@
     </div>
 </div> --}}
 
-<table class="table table-bordered">
+{{!-- <table class="table table-bordered">
     <thead>
         <tr>
             <th scope="col">#</th>
@@ -36,11 +36,22 @@
             <td>@twitter</td>
         </tr>
     </tbody>
-</table>
+</table> --}}
 
 <div class="image">
     Trail Manager
 </div>
+
+<form>
+    <div class="form-group">
+        <label for="minLengthInput">Minimum Length of Trail</label>
+        <input type="number" class="form-control" id="minLengthInput" name="minLengthInput" placeholder="Enter miles">
+
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
 
 {{#each trails}}
 <p>Name: {{this.name}}</p>
