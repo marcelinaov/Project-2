@@ -16,8 +16,9 @@
   <button type="login" class="btn btn-primary">Login</button>
 </form>
         <h6>Or Login with</h6>
-        <button type="login" class="btn btn-primary">Google</button>
-        <div id=“my-signin2”></div>
+        <div class="g-signin2" data-onsuccess="onSignIn">
+          <button type="login" class="btn btn-primary">Google</button>
+        </div>
       </div>
     </div>
   </div>
@@ -28,4 +29,4 @@
  
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
+<script src="../public/js/buttons.js"></script>
