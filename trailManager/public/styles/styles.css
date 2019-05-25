@@ -22,12 +22,13 @@ h6{
   padding-bottom: 20px;
 }
 
-.btn{
+.btn, .g-signin2{
   background-image: url("../images/RCZ2rt.jpg");
   position: center;
   background-repeat: no-repeat;
   background-size: cover;
   width: 50%;
+  margin: 0%;
 }
 
 .form-group{
