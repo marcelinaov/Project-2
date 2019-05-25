@@ -69,6 +69,17 @@ h6{
   height: 37px;
 }
 
+.btn3{
+  width: 200px;
+  margin: auto;
+  background-image: url("../images/RCZ2rt.jpg");
+  position: center;
+  background-repeat: no-repeat;
+  /* background-size: cover; */
+  border-radius: 4px;
+  height: 37px;
+}
+
 .navbar{
     /* background:transparent; */
     background-color: rgba(255,153,255,0.3);
@@ -102,6 +113,18 @@ p {
 
 .miles-input {
   width: 300px;
+}
+
+.scroll-bar {
+  height: 500px;
+  overflow-y: scroll;
+  padding: 25px;
+  background: rgba(255,255,255,0.3);
+  background-image: linear-gradient(to bottom, white, transparent 25px);
+  margin: 25px auto 0;
+  max-width: 500px;
+  border-radius: 4px;
+
 }
 
 

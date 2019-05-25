@@ -28,8 +28,8 @@
 
 <form class="search-form">
     <div class="form-group">
-        <label for="minLengthInput">How Much Time You Got</label>
-        <input type="number" class="form-control miles-input" id="minLengthInput" name="minLengthInput"
+        <label for="availableHours">How Much Time Do You Have?</label>
+        <input type="number" class="form-control miles-input" id="availableHours" name="availableHours"
             placeholder="Enter Hours">
 
     </div>
@@ -38,10 +38,12 @@
     <button type="submit" class="btn2 btn-primary">Search</button>
 </form>
 
-{{#each trails}}
-<p>Name: {{this.name}}</p>
-<p>Location: {{this.location}}</p>
-<p>Length: {{this.length}}</p>
-<p>Distance: {{this.distance}}</p>
-<hr>
-{{/each}}
+<div class="scroll-bar" </div> {{#each trails}} <p>Name: {{this.name}}
+    </p>
+    <p>Location: {{this.location}}</p>
+    <p>Length: {{this.length}}</p>
+    <p>Distance: {{this.distance}}</p>
+    <button type="submit" class="btn3 btn-primary">Add to Calendar</button>
+
+    <hr>
+    {{/each}}
