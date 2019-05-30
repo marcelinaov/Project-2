@@ -15,8 +15,7 @@ module.exports = function (app) {
   app.get("/calendar", function (req, res) {
     db.Example.findAll({}).then(function (dbExamples) {
       res.render("calendar", {
-        msg: "Welcome!",
-        examples: dbExamples
+
       });
     });
   });
