@@ -35,4 +35,98 @@ h6{
   padding-top: 20px;
 }
 
+.image{
+  background-image: url("../images/pink\ trail\ image.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 380px;
+  margin-top: -100px;
+}
+
+.trailTitle{
+  height: 150px;
+  color: white;
+  padding: 20px;
+  text-align: left;
+  padding-left: 100px;
+  padding-top: 35px;
+  /* letter-spacing: 3px; */
+}
+
+.form-control{
+  /* width: 300px; */
+  /* text-align: center; */
+  margin: auto;
+}
+
+.btn2{
+  width: 300px;
+  margin: auto;
+  background-image: url("../images/RCZ2rt.jpg");
+  position: center;
+  background-repeat: no-repeat;
+  /* background-size: cover; */
+  border-radius: 4px;
+  height: 37px;
+}
+
+.btn3{
+  width: 200px;
+  margin: auto;
+  background-image: url("../images/RCZ2rt.jpg");
+  position: center;
+  background-repeat: no-repeat;
+  /* background-size: cover; */
+  border-radius: 4px;
+  height: 37px;
+}
+
+.navbar{
+    /* background:transparent; */
+    background-color: rgba(255,153,255,0.3);
+    /* color: white; */
+}
+
+.navbar-light .navbar-brand {
+    color: #f8f9fa;
+    font-size: 36px;
+}
+
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+    color: #f8f9fa;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #f8f9fa;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: .5rem;
+    color: white;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.miles-input {
+  width: 300px;
+}
+
+.scroll-bar {
+  height: 500px;
+  overflow-y: scroll;
+  padding: 25px;
+  background: rgba(255,255,255,0.3);
+  background-image: linear-gradient(to bottom, white, transparent 25px);
+  margin: 25px auto 0;
+  max-width: 500px;
+  border-radius: 4px;
+
+}
+
+
 
