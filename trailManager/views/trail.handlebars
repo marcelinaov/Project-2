@@ -42,8 +42,17 @@
     </p>
     <p>Location: {{this.location}}</p>
     <p>Length: {{this.length}}</p>
-    <p>Distance: {{this.distance}}</p>
-    <button type="submit" class="btn3 btn-primary">Add to Calendar</button>
+    {{!-- <p>Distance: {{this.distance}}</p> --}}
+    <button type="button" class="btn3 btn-primary">Add to Calendar</button>
+    <button type="button" onclick="addToTaskList(this);" data-title="Walk the {{this.name}}"
+        data-description="Length: {{this.length}}" class="btn3 btn-primary">Add to Your
+        Task List</button>
 
     <hr>
     {{/each}}
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/js/trails.js"></script>
+
+
+    `

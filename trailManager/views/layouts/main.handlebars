@@ -3,9 +3,10 @@
 
 <head>
   <title>Trail Manager</title>
-  <meta charset="utf-8"> 
+  <meta charset="utf-8">
   {{!-- Google links for authentication --}}
-  <meta name="google-signin-client_id" content="50924872550-rirmmf176fipu9kj9lqs4ip7npb66eva.apps.googleusercontent.com">
+  <meta name="google-signin-client_id"
+    content="50924872550-rirmmf176fipu9kj9lqs4ip7npb66eva.apps.googleusercontent.com">
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   {{!-- Jquery link --}}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
@@ -13,45 +14,46 @@
   {{!-- Bootstrap link --}}
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
   <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
-  <script src="/trailManager/public/js/buttons.js"></script>
 
   <script>
-  var googleUser = {};
-  var startApp = function() {
-    gapi.load('auth2', function(){
-      // Retrieve the singleton for the GoogleAuth library and set up the client.
-      auth2 = gapi.auth2.init({
-        client_id: '50924872550-rirmmf176fipu9kj9lqs4ip7npb66eva.apps.googleusercontent.com',
-        cookiepolicy: 'single_host_origin',
-        // Request scopes in addition to 'profile' and 'email'
-        //scope: 'additional_scope'
+    var googleUser = {};
+    var startApp = function () {
+      gapi.load('auth2', function () {
+        // Retrieve the singleton for the GoogleAuth library and set up the client.
+        auth2 = gapi.auth2.init({
+          client_id: '50924872550-rirmmf176fipu9kj9lqs4ip7npb66eva.apps.googleusercontent.com',
+          cookiepolicy: 'single_host_origin',
+          // Request scopes in addition to 'profile' and 'email'
+          //scope: 'additional_scope'
+        });
+        attachSignin(document.getElementById('customBtn'));
       });
-      attachSignin(document.getElementById('customBtn'));
-    });
-  };
+    };
+    // Commented out temprarily as was failing during testing trails page
 
-  function attachSignin(element) {
-    console.log(element.id);
-    auth2.attachClickHandler(element, {},
-        function(googleUser) {
+    function attachSignin(element) {
+      console.log(element.id);
+      auth2.attachClickHandler(element, {},
+        function (googleUser) {
           document.getElementById('name').innerText = "Signed in: " +
-              googleUser.getBasicProfile().getName();
-        }, function(error) {
+            googleUser.getBasicProfile().getName();
+        }, function (error) {
           alert(JSON.stringify(error, undefined, 2));
         });
-  }
+    }
+
   </script>
-  
+
 </head>
 
 <body>
   {{{body}}}
 
-<!-- In the callback, you would hide the gSignInWrapper element on a
+  <!-- In the callback, you would hide the gSignInWrapper element on a
   successful sign in -->
-  
+
   <script>startApp();</script>
-  
+
 </body>
 
 </html>
