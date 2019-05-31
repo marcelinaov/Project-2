@@ -12,6 +12,24 @@ module.exports = function (app) {
     });
   });
 
+  app.get("/calendar", function (req, res) {
+    db.Example.findAll({}).then(function (dbExamples) {
+      res.render("calendar", {
+        // msg: "Welcome!",
+        examples: dbExamples
+      });
+    });
+  });
+
+  app.get("/task", function (req, res) {
+    db.Example.findAll({}).then(function (dbExamples) {
+      res.render("task", {
+        // msg: "Welcome!",
+        examples: dbExamples
+      });
+    });
+  });
+
   app.get("/trail", function (req, res) {
     // console.log(req.query);
     const availableHours = req.query.availableHours || 10;
