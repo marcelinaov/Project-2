@@ -32,26 +32,48 @@
     // Commented out temprarily as was failing during testing trails page
 
     function attachSignin(element) {
-      console.log(element.id);
-      auth2.attachClickHandler(element, {},
-        function (googleUser) {
-          document.getElementById('name').innerText = "Signed in: " +
-
-          alert(JSON.stringify(error, undefined, 2));
-        });
+      auth2.attachClickHandler(element, {}, function (googleUser) {
+        document.getElementById('name').innerText = "Signed in: ";
+        window.location.href = "/trail";
+        //alert(JSON.stringify(error, undefined, 2));
+      });
     }
-
   </script>
 
 </head>
 
 <body>
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="/trail">Trail Manager</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/task">Task List</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/calendar">Calendar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/">Log Out</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
   {{{body}}}
 
   <!-- In the callback, you would hide the gSignInWrapper element on a
   successful sign in -->
 
-  <script>startApp();</script>
+  <script>
+    startApp();
+  </script>
 
   
 

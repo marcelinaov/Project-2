@@ -1,42 +1,36 @@
-<nav class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" href="#">Trail Manager</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Calendar</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Log Out</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"></a>
-            </li>
-        </ul>
-    </div>
-</nav>
-
 <div class="image">
     <h1 class="trailTitle"></h1>
 </div>
 
+<<<<<<< HEAD
 <p>Google Calendar API Quickstart</p>
 
     <!--Add buttons to initiate auth sequence and sign out-->
     <button id="authorize_button" style="display: none;">Authorize</button>
     <button id="signout_button" style="display: none;">Sign Out</button>
+=======
+<div id="page-body">
+    <!-- [PERIOD SELECTOR] -->
+    <div id="cal-date">
+        <select id="cal-mth"></select>
+        <select id="cal-yr"></select>
+        <input id="cal-set" type="button" value="SET" />
+    </div>
+>>>>>>> 16abe273b94cc7639ee8241d31461e8feeab56f5
 
     <pre id="content" style="white-space: pre-wrap;"></pre>
 
+<<<<<<< HEAD
   <script src="/trailManager/public/js/calendar.js"></script>
 
   <script async defer src="https://apis.google.com/js/api.js"
       onload="this.onload=function(){};handleClientLoad()"
       onreadystatechange="if (this.readyState === 'complete') this.onload()">
     </script>
+=======
+    <!-- [EVENT] -->
+    <div id="cal-event"></div>
+</div>
+
+<script src="/trailManager/public/js/calendar.js"></script>
+>>>>>>> 16abe273b94cc7639ee8241d31461e8feeab56f5
