@@ -1,7 +1,6 @@
 require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
-var googapi = require("./googapitest")
 var db = require("./models");
 
 var app = express();
