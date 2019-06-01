@@ -1,0 +1,24 @@
+{
+  "name": "Project-2",
+  "version": "1.0.0",
+  "description": "https://www.hikingproject.com/data",
+  "main": "index.js",
+  "dependencies": {
+    "nice-try": "^2.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcelinaov/Project-2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcelinaov/Project-2/issues"
+  },
+  "homepage": "https://github.com/marcelinaov/Project-2#readme"
+}
