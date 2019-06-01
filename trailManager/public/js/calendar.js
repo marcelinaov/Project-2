@@ -1,186 +1,104 @@
-var cal = {
-    mName : ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], // Month Names
-    data : null, // Events for the selected period
-    sDay : 0, // Current selected day
-    sMth : 0, // Current selected month
-    sYear : 0, // Current selected year
-    sMon : false, // Week start on Monday?
-  
-    /* [FUNCTIONS] */
-    list : function () {
-    // cal.list() : draw the calendar for the given month
-  
-      // BASIC CALCULATIONS
-      // Note - Jan is 0 & Dec is 11 in JS.
-      // Note - Sun is 0 & Sat is 6
-      cal.sMth = parseInt(document.getElementById("cal-mth").value); // selected month
-      cal.sYear = parseInt(document.getElementById("cal-yr").value); // selected year
-      var daysInMth = new Date(cal.sYear, cal.sMth+1, 0).getDate(), // number of days in selected month
-          startDay = new Date(cal.sYear, cal.sMth, 1).getDay(), // first day of the month
-          endDay = new Date(cal.sYear, cal.sMth, daysInMth).getDay(); // last day of the month
-  
-      // LOAD DATA FROM LOCALSTORAGE
-      cal.data = localStorage.getItem("cal-" + cal.sMth + "-" + cal.sYear);
-      if (cal.data==null) {
-        localStorage.setItem("cal-" + cal.sMth + "-" + cal.sYear, "{}");
-        cal.data = {};
-      } else {
-        cal.data = JSON.parse(cal.data);
-      }
-  
-      // DRAWING CALCULATIONS
-      // Determine the number of blank squares before start of month
-      var squares = [];
-      if (cal.sMon && startDay != 1) {
-        var blanks = startDay==0 ? 7 : startDay ;
-        for (var i=1; i<blanks; i++) { squares.push("b"); }
-      }
-      if (!cal.sMon && startDay != 0) {
-        for (var i=0; i<startDay; i++) { squares.push("b"); }
-      }
-  
-      // Populate the days of the month
-      for (var i=1; i<=daysInMth; i++) { squares.push(i); }
-  
-      // Determine the number of blank squares after end of month
-      if (cal.sMon && endDay != 0) {
-        var blanks = endDay==6 ? 1 : 7-endDay;
-        for (var i=0; i<blanks; i++) { squares.push("b"); }
-      }
-      if (!cal.sMon && endDay != 6) {
-        var blanks = endDay==0 ? 6 : 6-endDay;
-        for (var i=0; i<blanks; i++) { squares.push("b"); }
-      }
-  
-      // DRAW
-      // Container & Table
-      var container = document.getElementById("container"),
-          cTable = document.createElement("table");
-      cTable.id = "calendar";
-      container.innerHTML = "";
-      container.appendChild(cTable);
-  
-      // First row - Days
-      var cRow = document.createElement("tr"),
-          cCell = null,
-          days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
-      if (cal.sMon) { days.push(days.shift()); }
-      for (var d of days) {
-        cCell = document.createElement("td");
-        cCell.innerHTML = d;
-        cRow.appendChild(cCell);
-      }
-      cRow.classList.add("head");
-      cTable.appendChild(cRow);
-  
-      // Days in Month
-      var total = squares.length;
-      cRow = document.createElement("tr");
-      cRow.classList.add("day");
-      for (var i=0; i<total; i++) {
-        cCell = document.createElement("td");
-        if (squares[i]=="b") { cCell.classList.add("blank"); }
-        else {
-          cCell.innerHTML = "<div class='dd'>"+squares[i]+"</div>";
-          if (cal.data[squares[i]]) {
-            cCell.innerHTML += "<div class='evt'>" + cal.data[squares[i]] + "</div>";
-          }
-          cCell.addEventListener("click", function(){
-            cal.show(this);
-          });
-        }
-        cRow.appendChild(cCell);
-        if (i!=0 && (i+1)%7==0) {
-          cTable.appendChild(cRow);
-          cRow = document.createElement("tr");
-          cRow.classList.add("day");
-        }
-      }
-  
-      // REMOVE ANY ADD/EDIT EVENT DOCKET
-      cal.close();
-    },
-  
-    show : function (el) {
-    // cal.show() : show edit event docket for selected day
-    // PARAM el : Reference back to cell clicked
-  
-      // FETCH EXISTING DATA
-      cal.sDay = el.getElementsByClassName("dd")[0].innerHTML;
-  
-      // DRAW FORM
-      var tForm = "<h1>" + (cal.data[cal.sDay] ? "EDIT" : "ADD") + " EVENT</h1>";
-      tForm += "<div id='evt-date'>" + cal.sDay + " " + cal.mName[cal.sMth] + " " + cal.sYear + "</div>";
-      tForm += "<textarea id='evt-details' required>" + (cal.data[cal.sDay] ? cal.data[cal.sDay] : "") + "</textarea>";
-      tForm += "<input type='button' value='Close' onclick='cal.close()'/>";
-      tForm += "<input type='button' value='Delete' onclick='cal.del()'/>";
-      tForm += "<input type='submit' value='Save'/>";
-  
-      // ATTACH
-      var eForm = document.createElement("form");
-      eForm.addEventListener("submit", cal.save);
-      eForm.innerHTML = tForm;
-      var container = document.getElementById("event");
-      container.innerHTML = "";
-      container.appendChild(eForm);
-    },
-  
-    close : function () {
-    // cal.close() : close event docket
-  
-      document.getElementById("cal-event").innerHTML = "";
-    },
-   
-    save : function (evt) {
-    // cal.save() : save event
-  
-      evt.stopPropagation();
-      evt.preventDefault();
-      cal.data[cal.sDay] = document.getElementById("evt-details").value;
-      localStorage.setItem("cal-" + cal.sMth + "-" + cal.sYear, JSON.stringify(cal.data));
-      cal.list();
-    },
-  
-    del : function () {
-    // cal.del() : Delete event for selected date
-  
-      if (confirm("Remove event?")) {
-        delete cal.data[cal.sDay];
-        localStorage.setItem("cal-" + cal.sMth + "-" + cal.sYear, JSON.stringify(cal.data));
-        cal.list();
-      }
-    }
-  };
-  
-  // INIT - DRAW MONTH & YEAR SELECTOR
-  window.addEventListener("load", function () {
-    // DATE NOW
-    var now = new Date(),
-        nowMth = now.getMonth(),
-        nowYear = parseInt(now.getFullYear());
-  
-    // APPEND MONTHS
-    var mth = document.getElementById("month");
-    for (var i = 0; i < 12; i++) {
-      var opt = document.createElement("option");
-      opt.value = i;
-      opt.innerHTML = cal.mName[i];
-      if (i==nowMth) { opt.selected = true; }
-      month.appendChild(opt);
-    }
-  
-    // APPEND YEARS
-    // Set to 10 years range. Change this as you like.
-    var year = document.getElementById("year");
-    for (var i = nowYear-10; i<=nowYear+10; i++) {
-      var opt = document.createElement("option");
-      opt.value = i;
-      opt.innerHTML = i;
-      if (i==nowYear) { opt.selected = true; }
-      year.appendChild(opt);
-    }
-  
-    // DRAW CALENDAR
-    document.getElementById("cal-set").addEventListener("click", cal.list);
-    cal.list();
-  });
+// // Client ID and API key from the Developer Console
+// // var CLIENT_ID = '<208080723254-gia6b2bi3r6qugv412grb58gui031dh5>';
+// // var API_KEY = '<zvVJsgnWlHVhfuGAM9xsMY8y>';
+// // Array of API discovery doc URLs for APIs used by the quickstart
+// var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
+// // Authorization scopes required by the API; multiple scopes can be
+// // included, separated by spaces.
+// var SCOPES = "https://www.googleapis.com/auth/calendar.readonly";
+// var authorizeButton = document.getElementById('authorize_button');
+// var signoutButton = document.getElementById('signout_button');
+// /**
+//  *  On load, called to load the auth2 library and API client library.
+//  */
+// function handleClientLoad() {
+//   gapi.load('client:auth2', initClient);
+// }
+// /**
+//  *  Initializes the API client library and sets up sign-in state
+//  *  listeners.
+//  */
+// function initClient() {
+//   gapi.client.init({
+//     apiKey: API_KEY,
+//     clientId: CLIENT_ID,
+//     discoveryDocs: DISCOVERY_DOCS,
+//     scope: SCOPES
+//   }).then(function () {
+//     // Listen for sign-in state changes.
+//     gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+//     // Handle the initial sign-in state.
+//     updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+//     authorizeButton.onclick = handleAuthClick;
+//     signoutButton.onclick = handleSignoutClick;
+//   }, function(error) {
+//     appendPre(JSON.stringify(error, null, 2));
+//   });
+// }
+// /**
+//  *  Called when the signed in status changes, to update the UI
+//  *  appropriately. After a sign-in, the API is called.
+//  */
+// function updateSigninStatus(isSignedIn) {
+//   if (isSignedIn) {
+//     authorizeButton.style.display = 'none';
+//     signoutButton.style.display = 'block';
+//     listUpcomingEvents();
+//   } else {
+//     authorizeButton.style.display = 'block';
+//     signoutButton.style.display = 'none';
+//   }
+// }
+// /**
+//  *  Sign in the user upon button click.
+//  */
+// function handleAuthClick(event) {
+//   gapi.auth2.getAuthInstance().signIn();
+// }
+// /**
+//  *  Sign out the user upon button click.
+//  */
+// function handleSignoutClick(event) {
+//   gapi.auth2.getAuthInstance().signOut();
+// }
+// /**
+//  * Append a pre element to the body containing the given message
+//  * as its text node. Used to display the results of the API call.
+//  *
+//  * @param {string} message Text to be placed in pre element.
+//  */
+// function appendPre(message) {
+//   var pre = document.getElementById('content');
+//   var textContent = document.createTextNode(message + '\n');
+//   pre.appendChild(textContent);
+// }
+// /**
+//  * Print the summary and start datetime/date of the next ten events in
+//  * the authorized user's calendar. If no events are found an
+//  * appropriate message is printed.
+//  */
+// function listUpcomingEvents() {
+//   gapi.client.calendar.events.list({
+//     'calendarId': 'primary',
+//     'timeMin': (new Date()).toISOString(),
+//     'showDeleted': false,
+//     'singleEvents': true,
+//     'maxResults': 10,
+//     'orderBy': 'startTime'
+//   }).then(function(response) {
+//     var events = response.result.items;
+//     appendPre('Upcoming events:');
+//     if (events.length > 0) {
+//       for (i = 0; i < events.length; i++) {
+//         var event = events[i];
+//         var when = event.start.dateTime;
+//         if (!when) {
+//           when = event.start.date;
+//         }
+//         appendPre(event.summary + ' (' + when + ')')
+//       }
+//     } else {
+//       appendPre('No upcoming events found.');
+//     }
+//   });
+// }
