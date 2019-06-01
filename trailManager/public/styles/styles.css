@@ -151,6 +151,7 @@ span.icon {
   vertical-align: middle;
   width: 42px;
   height: 42px;
+  
 }
 span.buttonText {
   display: inline-block;
@@ -163,3 +164,15 @@ span.buttonText {
   font-family: 'Roboto', sans-serif;
 }
 
+/* .title{
+  background-image: url("../images/On-the-Sunset-Trail.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 300px;
+  width: 400px;
+  padding-right: 30px;
+  -webkit-filter: grayscale(100%);filter: grayscale(100%);
+  float: left;
+  /* position: absolute;
+  right: -55px; */ */
+}
