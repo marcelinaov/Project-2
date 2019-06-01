@@ -1,6 +1,6 @@
 body{
   background-image: url("../images/purple.jpg");
-  background-repeat: no-repeat;
+  background-repeat: repeat-y;
   background-size: cover;
   text-align: center;
 }
@@ -9,6 +9,18 @@ body{
   border-radius: 15px;
   padding-top: 50px;
   height: 650px;
+  width: 30%;
+  background-color: white;
+  object-position: center;
+  position: absolute;
+  top: 100px;
+  left: 500px;
+}
+
+#tasks{
+  border-radius: 15px;
+  padding-top: 50px;
+  /* height: 650px; */
   width: 30%;
   background-color: white;
   object-position: center;

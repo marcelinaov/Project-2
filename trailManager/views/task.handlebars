@@ -1,28 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" href="localhost:3000/trail">Trail Manager</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Task List <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="localhost:3000/calendar">Calendar</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="localhost:3000/index">Log Out</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"></a>
-            </li>
-        </ul>
-    </div>
-</nav>
-
-<div id="home">
+<div id="tasks">
     <div class="container">
         <div class="row">
             <div class="col-8 offset-2">
@@ -41,7 +17,8 @@
                     </div>
                     <button id="submit" class="btn btn-primary float-right">Submit</button>
                 </form>
-                <div class="scroll-bar" </div> <h3>Task List of Trails:</h3>
+                <div class="" style="margin-bottom:20px">
+                    <h3>Task List of Trails:</h3>
                     <ul id="example-list" class="list-group">
                         {{#each examples}}
                         <li data-id="{{this.id}}" class="list-group-item">
