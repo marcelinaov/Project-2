@@ -1,7 +1,9 @@
-<div id="home">
+<div class="image">
+    <h1 class="trailTitle"></h1>
+</div>
     <div class="container">
         <div class="row">
-            <div class="col-8 offset-2">
+            <div class="col-6 offset-2">
                 <h1>{{msg}}</h1>
                 <h2>What Trail Do you Want to Tackle?</h2>
                 <form class="clearfix mb-4" action="POST">
@@ -15,14 +17,14 @@
                         <textarea class="form-control" id="example-description" aria-describedby="example-description"
                             placeholder="Trail Description"></textarea>
                     </div>
-                    <button id="submit" class="btn btn-primary float-right">Submit</button>
+                    <button id="submit" class="btn btn-primary float-center">Submit</button>
                 </form>
-                <div class="scroll-bar" </div> <h3>Task List of Trails:</h3>
+                <div class="scroll-bar"> <h3>Task List of Trails:</h3>
                     <ul id="example-list" class="list-group">
                         {{#each examples}}
                         <li data-id="{{this.id}}" class="list-group-item">
                             <a href="example/{{this.id}}">{{this.text}}</a>
-                            <button class="btn btn-danger float-right delete">ｘ</button>
+                            <button class="btn btn-danger float-right delete">Done</button>
                         </li>
                         {{/each}}
                     </ul>
