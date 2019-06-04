@@ -109,6 +109,6 @@ function addToTaskList(identifier) {
     };
 
     API.saveExample(example).then(function () {
-        alert('Task should have been added');
+        // alert('Task should have been added');
     });
 }
